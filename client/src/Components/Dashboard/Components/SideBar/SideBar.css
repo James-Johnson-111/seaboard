@@ -1,0 +1,56 @@
+.Dashboard .Dashboard_sideBar {
+    width: 18vw;
+    min-height: 100vh;
+    background-color: #1A2226;
+    color: #ECF0F5;
+    overflow: hidden;
+    position: fixed;
+}
+
+.Dashboard .Dashboard_sideBar .Dashboard_logo {
+    width: 100%;
+    height: max-content;
+    justify-content: space-between !important;
+    padding: 10px 20px;
+    font-family: Oxygen;
+    margin-bottom: 20px;
+}
+
+.Dashboard .Dashboard_sideBar .Dashboard_logo button {
+    font-size: 20px;
+    color: #ECF0F5;
+}
+
+.Dashboard .Dashboard_sideBar .Dashboard_logo button:focus {
+    box-shadow: none;
+}
+
+.Dashboard .Dashboard_sideBar .links {
+    justify-content: start !important;
+    padding: 10px 20px;
+    font-family: Poppins;
+    color: #ECF0F5;
+    margin-bottom: 10px;
+    border-left: 2px solid #1A2226;
+    transition: .5s;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.Dashboard .Dashboard_sideBar .Forms_options {
+    background-color: #222D32;
+}
+
+.Dashboard .Dashboard_sideBar .links i {
+    font-size: 18px;
+}
+
+.Dashboard_active {
+    background-color: #222D32;
+    border-left: 2px solid #0DB8DE !important;
+}
+
+.Dashboard .Dashboard_sideBar .links:hover {
+    text-decoration: none;
+    color: #0DB8DE;
+}

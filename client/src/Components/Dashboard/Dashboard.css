@@ -1,0 +1,12 @@
+.Dashboard {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.Dashboard .Dashboard_main_content {
+    height: auto;
+    width: 82vw;
+    margin-left: 18vw;
+    background-color: #ECF0F5;
+    min-height: 100vh;
+}
