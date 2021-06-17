@@ -1,6 +1,7 @@
 .Dashboard {
     width: 100%;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 .Dashboard .Dashboard_main_content {
@@ -9,4 +10,5 @@
     margin-left: 18vw;
     background-color: #ECF0F5;
     min-height: 100vh;
+    overflow: hidden;
 }

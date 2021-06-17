@@ -1,0 +1,71 @@
+.EmployeeForm {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.EmployeeForm .EmployeeForm-content {
+    width: 65%;
+    background-color: #fff;
+    padding: 50px 20px 30px 20px;
+    font-family: Poppins;
+    position: relative;
+    color: #222D32;
+    font-size: 12px;
+    margin-bottom: 50px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    position: relative;
+    overflow: hidden;
+}
+
+.EmployeeForm .EmployeeForm-content .emp_form_img {
+    width: 130px;
+    height: 150px;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.EmployeeForm .EmployeeForm-content .emp_form_img:hover {
+    background-color: #222D32;
+    color: #ECF0F5;
+    border: 1px solid #222D32;
+}
+
+.EmployeeForm .EmployeeForm-content .emp_form_img::before {
+    content: 'PHOTOGRAPH';
+    font-size: 12px;
+}
+
+.EmployeeForm .EmployeeForm-content .typeOfData {
+    padding: 10px;
+    font-family: Raleway;
+}
+
+.EmployeeForm .EmployeeForm-content .form-control {
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid #222D32;
+    height: 30px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.EmployeeForm .EmployeeForm-content .btn[type='submit'] {
+    background-color: #222D32;
+    color: #ECF0F5;
+    border-radius: 0;
+    width: 20%;
+    transition: .3s;
+}
+
+.EmployeeForm .EmployeeForm-content .btn[type='submit']:hover {
+    background-color: #fff;
+    color: #222D32;
+    border: 1px solid #222D32;
+}

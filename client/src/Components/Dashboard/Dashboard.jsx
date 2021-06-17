@@ -2,10 +2,13 @@ import React from 'react';
 
 import './Dashboard.css';
 import Cookies from 'js-cookies';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Route } from 'react-router-dom';
 import SideBar from './Components/SideBar/SideBar';
 import TopBar from './Components/TopBar/TopBar';
 import Breadcrumbs from './Components/Breadcrumbs/Breadcrumbs';
+import Descussion from './Pages/Descussion/Descussion';
+import DescussChat from './Pages/Descussion/Chat/Chat';
+import EmployeeForm from './Pages/EmployeeSetup/EmployeeForm';
 
 const Dashboard = () => {
 
@@ -37,6 +40,9 @@ const Dashboard = () => {
                     {/* TopBar End here */}
                     <div className="content">
                         <Breadcrumbs />
+                        <Route exact path='/dashboard' component={ Descussion } />
+                        <Route exact path='/employee' component={ EmployeeForm } />
+                        <Route exact path='/descuss_chat/:id' component={ DescussChat } />
                     </div>
                 </div>
 

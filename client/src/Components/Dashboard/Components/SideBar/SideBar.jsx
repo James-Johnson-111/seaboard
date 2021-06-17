@@ -30,12 +30,12 @@ const SideBar = () => {
             <div className="Dashboard_sideBar">
 
                 <div className="Dashboard_logo d-center">
-                    <div><h4 className="mb-0 logo">SEABORD</h4></div>
+                    <div><h4 className="mb-0 logo">SEABOARD</h4></div>
                     <div><button className="btn btn-sm p-0 m-0 sideBar_bars"><i className="las la-bars"></i></button></div>
                 </div>
 
                 <div className="Dashboard_links">
-                    <NavLink activeClassName="Dashboard_active" to="/" className="d-center links">
+                    <NavLink activeClassName="Dashboard_active" to="/dashboard" className="d-center links">
                         <div className="pr-3"><i className="las la-home"></i></div>
                         <div className="links_txt">Home</div>
                     </NavLink>
@@ -50,6 +50,10 @@ const SideBar = () => {
                     <NavLink activeClassName="Dashboard_active" to="/news" className="d-center links">
                         <div className="pr-3"><i className="las la-video"></i></div>
                         <div className="links_txt">Black Board</div>
+                    </NavLink>
+                    <NavLink activeClassName="Dashboard_active" to="/employee" className="d-center links">
+                        <div className="pr-3"><i className="las la-user-cog"></i></div>
+                        <div className="links_txt">Employement Setup</div>
                     </NavLink>
                     <div className="d-center links forms_link">
                         <div className="pr-3"><i className="las la-server"></i></div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import './EmployeeForm.css';
-import FormLogo from '../../images/seaboard.PNG';
+import FormLogo from '../../../../images/seaboard.PNG';
 import Webcam from 'react-webcam';
 import $ from 'jquery';
 
@@ -13,10 +13,11 @@ const EmployeeForm = () => {
     const [ Employee, setEmployee ] = useState( {
         Name: '', FatherName: '', Dob: '', PoB: '', Image: '', ImageName: '', RsdtAddress: '', PrmtAddress: '', Emergency_contact_person: '', 
         Emergency_contact_number: '', landlineHome: '', personal_no: '', cnic: '', cnic_PoI: '', cnic_DoI: '', cnic_DoE: '', password: '',
-        education: ''
+        education: '', photoGraph: ''
     } );
 
     const [ Camera, setCamera ] = useState( false );
+    const [ empImages, setempImages ]  = useState('');
 
     const refs = useRef(null);
 
@@ -56,7 +57,8 @@ const EmployeeForm = () => {
     const takePhoto = () => {
 
         var screenshot = refs.current.getScreenshot();
-        setEmployee( { Image: screenshot } );
+        setEmployee( { ...Employee, Image: screenshot } );
+        setempImages(screenshot);
         $('.close').trigger('click');
 
         let block = screenshot.split(";");
@@ -75,7 +77,7 @@ const EmployeeForm = () => {
 
         let ImageCurrentName = subName + subProfession + subPassport;
 
-        setEmployee( { Image: blob, ImageName: ImageCurrentName } );
+        setEmployee( { ...Employee, Image: blob, ImageName: ImageCurrentName } );
 
     }
 
@@ -108,18 +110,78 @@ const EmployeeForm = () => {
         <>
             <div className="EmployeeForm d-center">
                 <div className="EmployeeForm-content">
-                    <div className="text-center"><img src={ FormLogo } width="250" alt="FormLogo" /></div>
-                    <div className="text-center">
+                    {/* <div className="text-center"><img src={ FormLogo } width="250" alt="FormLogo" /></div> */}
+                    <div className="text-center mb-3">
                         <h3 className="text-uppercase formName mb-1">Employement Form</h3>
-                        <small>Seaboard Group Employee Data Form</small>
+                        <p>Seaboard Group Employee Data Form</p>
                     </div>
-                    <div className="text-center typeOfData shadow-sm my-4">
-                        <h5 className="mb-0">Personal Information</h5>
+                    <div className="emp_form_img" data-toggle="modal" data-target="#myModal" style={ { 'backgroundImage' : "url('" + empImages + "')", 'backgroundSize' : 'cover' } }></div>
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered">
+
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">LIVE CAMERA</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    {
+                                        Camera ?
+                                            <>
+                                                <Webcam
+                                                    audio={false}
+                                                    screenshotFormat="image/jpeg"
+                                                    width='100%'
+                                                    ref={refs}
+                                                    videoConstraints={videoConstraints}
+                                                />
+                                                <button className="btn btn-sm btn-block mt-3" onClick={takePhoto}>TAKE YOUR PHOTO</button>
+                                            </>
+                                            :
+                                            <h4 className="text-center my-3">Camera Not Found</h4>
+                                    }
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className="text-center typeOfData my-4">
+                        <h4 className="mb-0">Personal Information</h4>
                     </div>
                     <form onSubmit={ OnEmployeeDataEnter } encType="multipart/form-data">
                         
-                        <Step1 change={ onChangeHandler } />
-                        <div className="d-lg-flex justify-content-center mb-3">
+                        <div className="d-lg-flex justify-content-center">
+                            <div className="w-50 mr-2">
+                                <label className="mb-0">Name</label>
+                                <input onChange={ onChangeHandler } name="Name" type="text" pattern="^[A-Za-z]+$" title="Name only contains letters" className="form-control" required minLength="3" maxLength="15" />
+                            </div>
+                            <div className="w-50 ml-2">
+                                <label className="mb-0">Employee Father Name</label>
+                                <input onChange={ onChangeHandler } name="FatherName" type="text" pattern="^[A-Za-z]+$" title="Father Name only contains letters" className="form-control" required minLength="3" maxLength="15" />
+                            </div>
+                        </div>
+                        <div className="d-lg-flex justify-content-center">
+                            <div className="w-50 mr-2">
+                                <label className="mb-0">Date Of Birth</label>
+                                <input onChange={ onChangeHandler } name="Dob" type="date" className="form-control" required minLength="3" maxLength="15" />
+                            </div>
+                            <div className="w-50 ml-2">
+                                <label className="mb-0">Place Of Birth</label>
+                                <input list="cities" onChange={ onChangeHandler } name="PoB" type="text" className="form-control" pattern="^[A-Za-z]+$" title="City only contains letters" required minLength="3" maxLength="15" />
+                                <datalist id="cities">
+                                    <option value="Karachi" />
+                                    <option value="Lahore" />
+                                    <option value="Queta" />
+                                    <option value="Peshawer" />
+                                    <option value="Kashmir" />
+                                </datalist>
+                            </div>
+                        </div>
+                        <div className="d-lg-flex justify-content-center">
                             <div className="w-100">
                                 <label className="mb-0">Educational Qualification</label>
                                 <input list="degree" onChange={ onChangeHandler } name="education" type="text" className="form-control" pattern="^[A-Za-z]+$" title="Education only contains letters" required minLength="3" maxLength="15" />
@@ -133,102 +195,65 @@ const EmployeeForm = () => {
                                     <option value="MA" />
                                 </datalist>
                             </div>
-                            <div className="photo">
-                                <button type="button" className="btn py-2 px-3 border-0 shadow-none mt-2" data-toggle="modal" data-target="#myModal"><i class="las la-camera la-2x"></i></button>
-                                
-                                <div id="myModal" class="modal fade" role="dialog">
-                                    <div class="modal-dialog modal-dialog-centered">
-
-                                        
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">LIVE CAMERA</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                {
-                                                    Camera ?
-                                                        <>
-                                                            <Webcam
-                                                                audio={false}
-                                                                screenshotFormat="image/jpeg"
-                                                                width='100%'
-                                                                ref={ refs }
-                                                                videoConstraints={ videoConstraints }
-                                                            />
-                                                            <button className="btn btn-sm btn-block mt-3" onClick={ takePhoto }>TAKE YOUR PHOTO</button>
-                                                        </>
-                                                        :
-                                                        <h4 className="text-center my-3">Camera Not Found</h4>
-                                                }
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div className="text-center typeOfData shadow-sm my-4">
-                            <h5 className="mb-0">CNIC Information</h5>
+                        <div className="text-center typeOfData my-4">
+                            <h4 className="mb-0">CNIC Information</h4>
                         </div>
-                        <div className="d-lg-flex justify-content-center mb-3">
-                            <div className="mr-lg-2 mr-md-2 mr-sm-0 sides">
+                        <div className="d-lg-flex justify-content-center">
+                            <div className="w-50 mr-2">
                                 <label className="mb-0">CNIC</label>
                                 <input onChange={ onChangeHandler } name="cnic" type="text" pattern="^[0-9]+$" title="CNIC only contains letters" className="form-control" required minLength="13" maxLength="13" />
                             </div>
-                            <div className="ml-lg-2 ml-md-2 ml-sm-0 sides">
+                            <div className="w-50 ml-2">
                                 <label className="mb-0">Date Of Issue</label>
                                 <input onChange={ onChangeHandler } name="cnic_DoI" type="date" className="form-control" required minLength="3" maxLength="15" />
                             </div>
                         </div>
-                        <div className="d-lg-flex justify-content-center mb-3">
-                            <div className="mr-lg-2 mr-md-2 mr-sm-0 sides">
+                        <div className="d-lg-flex justify-content-center">
+                            <div className="w-50 mr-2">
                                 <label className="mb-0">Place Of Issue</label>
                                 <input onChange={ onChangeHandler } name="cnic_PoI" type="text" className="form-control" pattern="^[A-Za-z]+$" title="Place Of Issue only contains letters" required minLength="3" maxLength="15" />
                             </div>
-                            <div className="ml-lg-2 ml-md-2 ml-sm-0 sides">
+                            <div className="w-50 ml-2">
                                 <label className="mb-0">Date Of Expiry</label>
                                 <input onChange={ onChangeHandler } name="cnic_DoE" type="date" className="form-control" required minLength="3" maxLength="15" />
                             </div>
                         </div>
 
-                        <div className="text-center typeOfData shadow-sm my-4">
-                            <h5 className="mb-0">Contact Information</h5>
+                        <div className="text-center typeOfData my-4">
+                            <h4 className="mb-0">Contact Information</h4>
                         </div>
-                        <div className="d-lg-flex justify-content-center mb-3">
-                            <div className="mr-lg-2 mr-md-2 mr-sm-0 sides">
+                        <div className="d-lg-flex justify-content-center">
+                            <div className="w-50 mr-2">
                                 <label className="mb-0">Residential Address</label>
                                 <input onChange={ onChangeHandler } name="RsdtAddress" type="text" className="form-control" required minLength="10" maxLength="50" />
                             </div>
-                            <div className="ml-lg-2 ml-md-2 ml-sm-0 sides">
+                            <div className="w-50 ml-2">
                                 <label className="mb-0">Permanent Address</label>
                                 <input onChange={ onChangeHandler } name="PrmtAddress" type="text" className="form-control" required minLength="10" maxLength="50" />
                             </div>
                         </div>
-                        <div className="d-lg-flex justify-content-center mb-3">
-                            <div className="mr-lg-2 mr-md-2 mr-sm-0 sides">
+                        <div className="d-lg-flex justify-content-center">
+                            <div className="w-50 mr-2">
                                 <label className="mb-0">Emergency Contact Person </label>
                                 <input onChange={ onChangeHandler } name="Emergency_contact_person" type="text" className="form-control" pattern="^[A-Za-z]+$" title="Emergency Contact Person only contains letters" required minLength="3" maxLength="15" />
                             </div>
-                            <div className="ml-lg-2 ml-md-2 ml-sm-0 sides">
+                            <div className="w-50 ml-2">
                                 <label className="mb-0">Emergency Contact Number</label>
                                 <input onChange={ onChangeHandler } name="Emergency_contact_number" pattern="^[0-9]+$" type="text" className="form-control" required minLength="11" maxLength="13" />
                             </div>
                         </div>
-                        <div className="d-lg-flex justify-content-center mb-3">
-                            <div className="mr-lg-2 mr-md-2 mr-sm-0 sides">
+                        <div className="d-lg-flex justify-content-center">
+                            <div className="w-50 mr-2">
                                 <label className="mb-0">Landline Home </label>
                                 <input onChange={ onChangeHandler } name="landlineHome" type="text" className="form-control" pattern="^[A-Za-z]+$" title="Emergency Contact Person only contains letters" required minLength="3" maxLength="15" />
                             </div>
-                            <div className="ml-lg-2 ml-md-2 ml-sm-0 sides">
+                            <div className="w-50 ml-2">
                                 <label className="mb-0">Personal Cell Phone Number</label>
                                 <input onChange={ onChangeHandler } name="personal_no" pattern="^[0-9]+$" type="text" className="form-control" required minLength="11" maxLength="13" />
                             </div>
                         </div>
-                        <div className="text-center">
+                        <div className="text-center mt-3">
                             <button type="submit" className="btn" id="callSecondStep">SUBMIT</button>
                         </div>
 
@@ -237,7 +262,7 @@ const EmployeeForm = () => {
             </div>
         </>
     )
-
+    
 }
 
 export default EmployeeForm;

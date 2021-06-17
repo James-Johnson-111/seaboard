@@ -32,6 +32,7 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     font-size: 12px;
     font-family: Raleway;
+    z-index: 300;
 }
 
 .Dashboard .Dashboard_main_content .Dashboard_topbar .icons .emp_img_container .emp_dropdown .links {
@@ -68,8 +69,8 @@
     position: absolute;
     top: 2px;
     left: calc(75% - 10px);
-    width: 10px;
-    height: 10px;
+    width: 7px;
+    height: 7px;
     background-color: #0DB8DE;
     border-radius: 50%;
 }
@@ -85,6 +86,8 @@
     left: -250px;
     width: 300px;
     padding: 10px;
+    z-index: 300;
+    background-color: #fff;
 }
 
 .Dashboard .Dashboard_main_content .Dashboard_topbar .icons .search .search_dropdown .form-control {

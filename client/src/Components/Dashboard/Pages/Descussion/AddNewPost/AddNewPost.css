@@ -1,0 +1,43 @@
+.Descussion .createpost {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-family: Poppins;
+}
+
+.Descussion .createpost textarea {
+    border: 0;
+    background-color: rgb(211, 211, 211, .3);
+}
+
+.Descussion .createpost i {
+    font-size: 20px;
+}
+
+.Descussion .createpost .options {
+    width: 33.33%;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.Descussion .createpost .options:hover {
+    color: #0DB8DE;
+}
+
+.Descussion .createpost .options .btn {
+    background-color: #0DB8DE;
+    color: #ffffff;
+    width: 100%;
+    display: block;
+    transition: .5s;
+}
+
+.Descussion .createpost .options .btn:hover {
+    background-color: #ffffff;
+    color: #0DB8DE;
+    border: #0DB8DE 1px solid;
+}
