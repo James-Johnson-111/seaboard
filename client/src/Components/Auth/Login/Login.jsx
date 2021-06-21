@@ -87,7 +87,7 @@ const Login = () => {
     }
 
     if (Cookies.getItem('LoginID')) {
-        history.push('/');
+        history.push('/dashboard');
     };
 
     return (

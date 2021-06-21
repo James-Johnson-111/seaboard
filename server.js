@@ -16,6 +16,9 @@ app.use(fileUpload());
 // Following route for user authentication i.e login/logout
 app.use( require('./Routes/Auth/auth') );
 
+// Following route for employee form
+app.use( require('./Routes/Employee/employee') );
+
 // the following block of code is to define the port number which is dynamic
 
 app.listen(PORT, () => {

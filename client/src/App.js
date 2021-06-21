@@ -1,11 +1,17 @@
+import React from 'react';
+
 import './App.css';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import Login from './Components/Auth/Login/Login';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Logout from './Components/Auth/Logout/Logout';
 
 const App = () => {
+
+    const history = useHistory();
+
+    history.push('/dashboard');
 
         return ( 
             <>
