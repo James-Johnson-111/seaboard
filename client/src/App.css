@@ -1,0 +1,29 @@
+.d-450-block {
+    display: none !important;
+}
+
+.d-450-none {
+    display: block !important;
+}
+
+.d-1200-block {
+    display: none !important;
+}
+
+@media only screen and (max-width: 1200px) {
+    .d-1200-block {
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .d-450-block {
+        display: block !important;
+    }
+    .d-450-none {
+        display: none !important;
+    }
+    .Descussion .previous_descussions {
+        width: 100%;
+    }
+}

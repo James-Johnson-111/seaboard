@@ -11,4 +11,12 @@
     background-color: #ECF0F5;
     min-height: 100vh;
     overflow: hidden;
+    transition: .3s;
+}
+
+@media only screen and (max-width: 1200px) {
+    .Dashboard .Dashboard_main_content {
+        width: 100vw;
+        margin-left: 0;
+    }
 }

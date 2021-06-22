@@ -21,6 +21,8 @@ const App = () => {
                     <Route exact path='/logout' component={ Logout } />
                     <Route exact path='/employee' component={ Dashboard } />
                     <Route exact path='/descuss_chat/:id' component={ Dashboard } />
+
+                    <Route exact path='/purchaserequisition' component={ Dashboard } />
                 </Switch>
             </>
         )

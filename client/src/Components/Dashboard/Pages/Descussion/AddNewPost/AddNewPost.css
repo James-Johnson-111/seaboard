@@ -18,6 +18,19 @@
     font-size: 20px;
 }
 
+.Descussion .createpost .left {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+}
+
+.Descussion .createpost .btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
 .Descussion .createpost .options {
     width: 33.33%;
     cursor: pointer;
@@ -40,4 +53,57 @@
     background-color: #ffffff;
     color: #0DB8DE;
     border: #0DB8DE 1px solid;
+}
+
+@media only screen and (max-width: 1000px) {
+    .Descussion .createpost {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .Descussion .createpost {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .Descussion .createpost {
+        width: 90%;
+    }
+    .Descussion .createpost .left {
+        width: 100%;
+        padding-bottom: 10px;
+    }
+    .Descussion .createpost .btns {
+        width: 100%;
+    }
+    .Descussion .createpost .options-container {
+        display: block !important;
+        justify-content: start !important;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .Descussion .createpost {
+        width: 95%;
+    }
+    .Descussion .createpost .options-container {
+        display: block !important;
+        justify-content: start !important;
+    }
+    .Descussion .createpost .options {
+        width: 100% !important;
+        padding: 5px 0;
+    }
+    .Descussion .createpost .option1,
+    .Descussion .createpost .option2 {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .Descussion .createpost {
+        width: 100%;
+    }
 }

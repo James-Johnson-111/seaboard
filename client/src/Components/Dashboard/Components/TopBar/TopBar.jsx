@@ -4,7 +4,7 @@ import './TopBar.css';
 import $ from 'jquery';
 import { NavLink } from 'react-router-dom';
 
-const TopBar = () => {
+const TopBar = ( props ) => {
 
     useEffect(
         () => {
@@ -31,13 +31,14 @@ const TopBar = () => {
     return (
         <>
             <div className="Dashboard_topbar d-center shadow-sm">
-                <div className="topbar_news">
+                <div className="topbar_news d-450-none">
                     <p className="mb-0" style={{ "whiteSpace": 'nowrap' }}>
                         <marquee direction="left">
                             In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
                         </marquee>
                     </p>
                 </div>
+                <div className=" d-450-block"></div>
                 <div className="icons d-center">
                     <div className="px-3 search">
                         <i class="las la-search"></i>
@@ -64,6 +65,11 @@ const TopBar = () => {
                                 <div className="links_txt">Logout</div>
                             </NavLink>
                         </div>
+                    </div>
+                    <div className="threeDots d-1200-block">
+                        <button className="btn p-0 m-0" onClick={ () => props.sideBarTrue() }>
+                            <i className="las la-ellipsis-v la-2x"></i>
+                        </button>
                     </div>
                 </div>
             </div>

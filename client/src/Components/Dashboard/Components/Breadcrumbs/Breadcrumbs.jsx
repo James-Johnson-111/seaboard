@@ -9,7 +9,6 @@ const Breadcrumbs = () => {
             <div className="Breadcrumbs">
                 <span className="p-0 m-0 pl-2">Home</span> <i class="las la-angle-double-right m-0 p-0"></i>
                 <span className="p-0 m-0 pl-2">Descussions</span> 
-                {/* <span className="p-0 m-0 pl-2">Themes</span> */}
             </div>
         </>
     )

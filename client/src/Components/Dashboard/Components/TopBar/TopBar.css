@@ -57,7 +57,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-image: url('https://www.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg');
+    background-image: url('https://www.gizbot.com/img/2016/05/shutterstock-380389330-28-1464414634.jpg');
     background-size: cover;
 }
 
@@ -143,4 +143,18 @@
 .Dashboard .modal .modal-dialog .modal-content .btn:hover {
     background-color: #0DB8DE;
     color: #ECF0F5;
+}
+
+@media only screen and (max-width: 450px) {
+    .Dashboard .Dashboard_main_content .Dashboard_topbar {
+        padding: 10px;
+    }
+    .Dashboard .Dashboard_main_content .Dashboard_topbar .icons .search {
+        position: static;
+    }
+    .Dashboard .Dashboard_main_content .Dashboard_topbar .icons .search .search_dropdown {
+        width: 100%;
+        left: 0;
+        top: 50px;
+    }
 }

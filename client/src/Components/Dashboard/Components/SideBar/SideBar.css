@@ -5,6 +5,8 @@
     color: #ECF0F5;
     overflow: hidden;
     position: fixed;
+    z-index: 999;
+    transition: .3s;
 }
 
 .Dashboard .Dashboard_sideBar .Dashboard_logo {
@@ -35,6 +37,7 @@
     transition: .5s;
     font-size: 12px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .Dashboard .Dashboard_sideBar .Forms_options {
@@ -53,4 +56,10 @@
 .Dashboard .Dashboard_sideBar .links:hover {
     text-decoration: none;
     color: #0DB8DE;
+}
+
+@media only screen and (max-width: 1200px) {
+    .Dashboard .Dashboard_sideBar {
+        width: 0;
+    }
 }

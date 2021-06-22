@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './SideBar.css';
 import $ from 'jquery';
 
-const SideBar = () => {
+const SideBar = ( props ) => {
 
     useEffect(
         () => {
@@ -27,7 +27,8 @@ const SideBar = () => {
 
     return (
         <>
-            <div className="Dashboard_sideBar">
+            {/* style={ { 'width' : props.show ? '100vw' : '0' } } */}
+            <div className="Dashboard_sideBar" >
 
                 <div className="Dashboard_logo d-center">
                     <div><h4 className="mb-0 logo">SEABOARD</h4></div>
@@ -63,9 +64,9 @@ const SideBar = () => {
                         </div>
                     </div>
                     <div className="Forms_options">
-                        <NavLink activeClassName="Dashboard_active" to="/news" className="d-center links">
+                        <NavLink activeClassName="Dashboard_active" to="/purchaserequisition" className="d-center links">
                             <div className="pr-3"><i className="las la-hand-holding-usd"></i></div>
-                            <div className="links_txt">Purchase Form</div>
+                            <div className="links_txt">Purchase Requisition</div>
                         </NavLink>
                         <NavLink activeClassName="Dashboard_active" to="/news" className="d-center links">
                             <div className="pr-3"><i className="las la-exchange-alt"></i></div>

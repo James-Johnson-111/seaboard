@@ -17,7 +17,8 @@
     overflow: hidden;
 }
 
-.EmployeeForm .EmployeeForm-content .emp_form_img {
+.EmployeeForm .EmployeeForm-content .emp_form_img,
+.EmployeeForm .EmployeeForm-content .emp_form_img_sm {
     width: 130px;
     height: 150px;
     border: 1px solid #000;
@@ -31,13 +32,18 @@
     transition: .5s;
 }
 
+.EmployeeForm .EmployeeForm-content .emp_form_img_sm {
+    display: none;
+}
+
 .EmployeeForm .EmployeeForm-content .emp_form_img:hover {
     background-color: #222D32;
     color: #ECF0F5;
     border: 1px solid #222D32;
 }
 
-.EmployeeForm .EmployeeForm-content .emp_form_img::before {
+.EmployeeForm .EmployeeForm-content .emp_form_img::before,
+.EmployeeForm .EmployeeForm-content .emp_form_img_sm::before {
     content: 'PHOTOGRAPH';
     font-size: 12px;
 }
@@ -56,6 +62,10 @@
     font-size: 12px;
 }
 
+.EmployeeForm .EmployeeForm-content .leftRight {
+    width: 50%;
+}
+
 .EmployeeForm .EmployeeForm-content .btn[type='submit'] {
     background-color: #222D32;
     color: #ECF0F5;
@@ -68,4 +78,37 @@
     background-color: #fff;
     color: #222D32;
     border: 1px solid #222D32;
+}
+
+@media only screen and (max-width: 991px) {
+    .EmployeeForm .EmployeeForm-content {
+        width: 80%;
+    }
+    .EmployeeForm .EmployeeForm-content .leftRight {
+        width: 100%;
+        margin: 0 !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .EmployeeForm .EmployeeForm-content {
+        width: 95%;
+    }
+    .EmployeeForm .EmployeeForm-content .emp_form_img {
+        display: none;
+    }
+    .EmployeeForm .EmployeeForm-content .emp_form_img_sm {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        top: 30px;
+        right: calc( 50% - 75px);
+        display: flex;
+    }
+    .EmployeeForm .EmployeeForm-content .emp_heading {
+        margin-top: 150px;
+    }
+    .EmployeeForm .EmployeeForm-content .btn[type='submit'] {
+        width: 40%;
+    }
 }

@@ -109,7 +109,8 @@ const EmployeeForm = () => {
             <div className="EmployeeForm d-center">
                 <div className="EmployeeForm-content">
                     <div className="firstform">
-                        <div className="text-center mb-3">
+                    <div className="emp_form_img_sm" data-toggle="modal" data-target="#myModal" style={{ 'backgroundImage': "url('" + empImages + "')", 'backgroundSize': 'cover' }}></div>
+                        <div className="text-center mb-3 emp_heading">
                             <h3 className="text-uppercase formName mb-1">Employement Form</h3>
                             <p>Seaboard Group Employee Data Form</p>
                         </div>
@@ -154,21 +155,21 @@ const EmployeeForm = () => {
 
                             <div className="firstStep">
                                 <div className="d-lg-flex justify-content-center">
-                                    <div className="w-50 mr-2">
+                                    <div className="leftRight mr-2">
                                         <label className="mb-0">Name</label>
                                         <input onChange={onChangeHandler} name="Name" type="text" pattern="^[A-Za-z]+$" title="Name only contains letters" className="form-control" required minLength="3" maxLength="15" />
                                     </div>
-                                    <div className="w-50 ml-2">
+                                    <div className="leftRight ml-2">
                                         <label className="mb-0">Father Name</label>
                                         <input onChange={onChangeHandler} name="FatherName" type="text" pattern="^[A-Za-z]+$" title="Father Name only contains letters" className="form-control" required minLength="3" maxLength="15" />
                                     </div>
                                 </div>
                                 <div className="d-lg-flex justify-content-center">
-                                    <div className="w-50 mr-2">
+                                    <div className="leftRight mr-2">
                                         <label className="mb-0">Date Of Birth</label>
                                         <input onChange={onChangeHandler} name="Dob" type="date" className="form-control" required minLength="3" maxLength="15" />
                                     </div>
-                                    <div className="w-50 ml-2">
+                                    <div className="leftRight ml-2">
                                         <label className="mb-0">Place Of Birth</label>
                                         <input list="cities" onChange={onChangeHandler} name="PoB" type="text" className="form-control" pattern="^[A-Za-z]+$" title="City only contains letters" required minLength="3" maxLength="15" />
                                         <datalist id="cities">
@@ -199,21 +200,21 @@ const EmployeeForm = () => {
                                     <h4 className="mb-0">CNIC Information</h4>
                                 </div>
                                 <div className="d-lg-flex justify-content-center">
-                                    <div className="w-50 mr-2">
+                                    <div className="leftRight mr-2">
                                         <label className="mb-0">CNIC</label>
                                         <input onChange={onChangeHandler} name="cnic" type="text" pattern="^[0-9]+$" title="CNIC only contains letters" className="form-control" required minLength="13" maxLength="13" />
                                     </div>
-                                    <div className="w-50 ml-2">
+                                    <div className="leftRight ml-2">
                                         <label className="mb-0">Date Of Issue</label>
                                         <input onChange={onChangeHandler} name="cnic_DoI" type="date" className="form-control" required minLength="3" maxLength="15" />
                                     </div>
                                 </div>
                                 <div className="d-lg-flex justify-content-center">
-                                    <div className="w-50 mr-2">
+                                    <div className="leftRight mr-2">
                                         <label className="mb-0">Place Of Issue</label>
                                         <input onChange={onChangeHandler} name="cnic_PoI" type="text" className="form-control" pattern="^[A-Za-z]+$" title="Place Of Issue only contains letters" required minLength="3" maxLength="15" />
                                     </div>
-                                    <div className="w-50 ml-2">
+                                    <div className="leftRight ml-2">
                                         <label className="mb-0">Date Of Expiry</label>
                                         <input onChange={onChangeHandler} name="cnic_DoE" type="date" className="form-control" required minLength="3" maxLength="15" />
                                     </div>
@@ -223,31 +224,31 @@ const EmployeeForm = () => {
                                     <h4 className="mb-0">Contact Information</h4>
                                 </div>
                                 <div className="d-lg-flex justify-content-center">
-                                    <div className="w-50 mr-2">
+                                    <div className="leftRight mr-2">
                                         <label className="mb-0">Residential Address</label>
                                         <input onChange={onChangeHandler} name="RsdtAddress" type="text" className="form-control" required minLength="10" maxLength="50" />
                                     </div>
-                                    <div className="w-50 ml-2">
+                                    <div className="leftRight ml-2">
                                         <label className="mb-0">Permanent Address</label>
                                         <input onChange={onChangeHandler} name="PrmtAddress" type="text" className="form-control" required minLength="10" maxLength="50" />
                                     </div>
                                 </div>
                                 <div className="d-lg-flex justify-content-center">
-                                    <div className="w-50 mr-2">
+                                    <div className="leftRight mr-2">
                                         <label className="mb-0">Emergency Contact Person </label>
                                         <input onChange={onChangeHandler} name="Emergency_contact_person" type="text" className="form-control" pattern="^[A-Za-z]+$" title="Emergency Contact Person only contains letters" required minLength="3" maxLength="15" />
                                     </div>
-                                    <div className="w-50 ml-2">
+                                    <div className="leftRight ml-2">
                                         <label className="mb-0">Emergency Contact Number</label>
                                         <input onChange={onChangeHandler} name="Emergency_contact_number" pattern="^[0-9]+$" type="text" className="form-control" required minLength="11" maxLength="13" />
                                     </div>
                                 </div>
                                 <div className="d-lg-flex justify-content-center">
-                                    <div className="w-50 mr-2">
+                                    <div className="leftRight mr-2">
                                         <label className="mb-0">Landline Home </label>
                                         <input onChange={onChangeHandler} name="landlineHome" type="text" className="form-control" pattern="^[A-Za-z]+$" title="Emergency Contact Person only contains letters" required minLength="3" maxLength="15" />
                                     </div>
-                                    <div className="w-50 ml-2">
+                                    <div className="leftRight ml-2">
                                         <label className="mb-0">Personal Cell Phone Number</label>
                                         <input onChange={onChangeHandler} name="personal_no" pattern="^[0-9]+$" type="text" className="form-control" required minLength="11" maxLength="13" />
                                     </div>
