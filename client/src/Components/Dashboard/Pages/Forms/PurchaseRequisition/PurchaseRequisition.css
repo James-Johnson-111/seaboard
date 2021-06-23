@@ -26,20 +26,15 @@
 }
 
 .PurchaseRequisition .PurchaseRequisition-content .qfs {
-    position: absolute;
-    top: 50px;
-    left: 20px;
+    width: 33.33%;
 }
 
 .PurchaseRequisition .PurchaseRequisition-content .sbl {
-    position: absolute;
-    top: 110px;
-    right: 20px;
+    width: 33.33%;
 }
 
 .PurchaseRequisition .PurchaseRequisition-content .sbs {
-    display: block;
-    margin: 20px auto;
+    width: 33.33%;
 }
 
 .PurchaseRequisition .PurchaseRequisition-content .form-control {
@@ -73,11 +68,12 @@
 
 .modal .add_specification {
     font-size: 12px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .modal .add_specification .form-control {
     background: none;
+    color: #fff;
 }
 
 .modal .add_specification .btn {

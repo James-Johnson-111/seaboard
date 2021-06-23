@@ -68,6 +68,10 @@ const SideBar = ( props ) => {
                             <div className="pr-3"><i className="las la-hand-holding-usd"></i></div>
                             <div className="links_txt">Purchase Requisition</div>
                         </NavLink>
+                        <NavLink activeClassName="Dashboard_active" to="/purchaserorder" className="d-center links">
+                            <div className="pr-3"><i className="las la-border-none"></i></div>
+                            <div className="links_txt">Purchase Order</div>
+                        </NavLink>
                         <NavLink activeClassName="Dashboard_active" to="/news" className="d-center links">
                             <div className="pr-3"><i className="las la-exchange-alt"></i></div>
                             <div className="links_txt">Transfer Form</div>

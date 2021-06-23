@@ -23,6 +23,7 @@ const App = () => {
                     <Route exact path='/descuss_chat/:id' component={ Dashboard } />
 
                     <Route exact path='/purchaserequisition' component={ Dashboard } />
+                    <Route exact path='/purchaserorder' component={ Dashboard } />
                 </Switch>
             </>
         )

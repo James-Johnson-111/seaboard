@@ -10,6 +10,7 @@ import Descussion from './Pages/Descussion/Descussion';
 import DescussChat from './Pages/Descussion/Chat/Chat';
 import EmployeeForm from './Pages/EmployeeSetup/EmployeeForm';
 import PurchaseRequisition from './Pages/Forms/PurchaseRequisition/PurchaseRequisition';
+import PurchaseOrder from './Pages/Forms/PurchaseOrder/PurchaseOrder';
 
 const Dashboard = () => {
 
@@ -18,13 +19,13 @@ const Dashboard = () => {
 
     setInterval(() => {
         
-        // if ( Cookies.getItem("LoginID") || Cookies.getItem("LoginID") === '' )
-        // {
-        //     // Empty
-        // }else
-        // {
-        //     history.push('/login');
-        // }
+        if ( Cookies.getItem("LoginID") || Cookies.getItem("LoginID") === '' )
+        {
+            // Empty
+        }else
+        {
+            history.push('/login');
+        }
         
     }, 100);
 
@@ -59,6 +60,7 @@ const Dashboard = () => {
                         <Route exact path='/descuss_chat/:id' component={ DescussChat } />
 
                         <Route exact path='/purchaserequisition' component={ PurchaseRequisition } />
+                        <Route exact path='/purchaserorder' component={ PurchaseOrder } />
                     </div>
                 </div>
 
