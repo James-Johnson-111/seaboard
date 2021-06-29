@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './App.css';
 
@@ -7,11 +7,50 @@ import Login from './Components/Auth/Login/Login';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Logout from './Components/Auth/Logout/Logout';
 
+import raw from './text.txt';
+import axios from './axios';
+
 const App = () => {
 
     const history = useHistory();
 
-    history.push('/dashboard');
+    useEffect(
+        () => {
+            history.push('/dashboard');
+            // setInterval(() => {
+
+                // fetch(raw)
+                // .then(r => r.text())
+                // .then(text => {
+
+                //     let content = text.split('\n');
+                //     let FirstLine = content.shift();
+
+                //     content.filter(
+                //         ( val, index, arr ) => {
+                //             return val !== FirstLine;
+                //         }
+                //     )
+                //     console.log( content );
+                    
+                //     var fso = CreateObject("Scripting.FileSystemObject");
+                //     var s = fso.CreateTextFile("./text.txt", true);
+
+                //     s.write(content);
+                //     s.Close();
+
+                // });
+
+                // Get Last Modified date of file
+
+                // axios.get('/gettimeinout').then( res => {
+                //     console.log( res.data );
+                // } ).catch(err => {
+                //     console.log (err);
+                // })
+            // }, 500);
+        }, []
+    )
 
         return ( 
             <>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './Dashboard.css';
 import Cookies from 'js-cookies';
@@ -11,11 +11,20 @@ import DescussChat from './Pages/Descussion/Chat/Chat';
 import EmployeeForm from './Pages/EmployeeSetup/EmployeeForm';
 import PurchaseRequisition from './Pages/Forms/PurchaseRequisition/PurchaseRequisition';
 import PurchaseOrder from './Pages/Forms/PurchaseOrder/PurchaseOrder';
+import axios from 'axios';
 
 const Dashboard = () => {
 
     const history = useHistory();
     const [ ShowBar, setShowBar ] = useState( false );
+
+    useEffect(
+        () => {
+
+            axios.post();
+
+        }, []
+    )
 
     setInterval(() => {
         
@@ -39,7 +48,7 @@ const Dashboard = () => {
             setShowBar( true );
         }
 
-    }
+    }          
 
     return (
         <>

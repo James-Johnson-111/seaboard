@@ -6,9 +6,7 @@ import Cookies from 'js-cookies';
 
 import { useHistory } from 'react-router-dom';
 import Loading from '../../UI/Loading/Loading';
-
-const Cryptr = require('cryptr');
-const cryptr = new Cryptr('myTotalySecretKey');
+import passwordHash from 'password-hash';
 
 const Login = () => {
 
@@ -51,22 +49,30 @@ const Login = () => {
         e.preventDefault();
         setStartLoading(true);
 
-        // console.log(cryptr.encrypt(UserData.LoginPass));
-        axios.get('/getallusers').then( response => {
+        axios.get('/getallemployees').then( response => {
 
             for ( let x = 0; x < response.data.length; x++ )
             {
-                
                 // if the password and login id ofthe current index of an array is matched with 
                 // the entered login id and password, the following condition will be true
-                if ( UserData.LoginID === response.data[x].login_id && UserData.LoginPass === cryptr.decrypt(response.data[x].password) )
+                if ( (UserData.LoginID === response.data[x].login_id) )
                 {
                     
-                    alert("Login success");
-                    setStartLoading(false);
-                    Cookies.setItem('LoginID', response.data[x].login_id);
-                    setUserData( { LoginID: '', LoginPass: '' } );
-                    history.push('/login');
+                    const verifyPass = passwordHash.verify( UserData.LoginPass, response.data[x].password );
+
+                    if ( verifyPass )
+                    {
+                        alert("Login success");
+                        setStartLoading(false);
+                        Cookies.setItem('LoginID', response.data[x].login_id);
+                        Cookies.setItem('EmpImg', response.data[x].image);
+                        setUserData( { LoginID: '', LoginPass: '' } );
+                        history.push('/login');
+                    }else {
+                        setStartLoading(false);
+                        setUserData( { LoginID: UserData.LoginID, LoginPass: '' } );
+                        alert("Password not match");
+                    }
                     
                 }else
                 {

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
-
-import './TopBar.css';
-import $ from 'jquery';
 import { NavLink } from 'react-router-dom';
+
+import $ from 'jquery';
+import './TopBar.css';
+import Cookies from 'js-cookies';
+import axios from '../../../../axios';
 
 const TopBar = ( props ) => {
 
@@ -28,11 +30,19 @@ const TopBar = ( props ) => {
         }, []
     )
 
+    const readWrite = () => {
+        axios.get('/gettimeinout').then(res => {
+            console.log( res.data );
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
     return (
         <>
             <div className="Dashboard_topbar d-center shadow-sm">
                 <div className="topbar_news d-450-none">
-                    <p className="mb-0" style={{ "whiteSpace": 'nowrap' }}>
+                    <p className="mb-0" style={{ "whiteSpace": 'nowrap' }} onClick={ readWrite }>
                         <marquee direction="left">
                             In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
                         </marquee>
@@ -41,15 +51,15 @@ const TopBar = ( props ) => {
                 <div className=" d-450-block"></div>
                 <div className="icons d-center">
                     <div className="px-3 search">
-                        <i class="las la-search"></i>
-                        <div class="btn-group search_dropdown" href="#">
+                        <i className="las la-search"></i>
+                        <div className="btn-group search_dropdown" href="#">
                             <input type="search" className="form-control form-control-sm" />
                             <button className="btn btn-sm"><i className="las la-search"></i></button>
                         </div>
                     </div>
-                    <div className="px-3 notification"> <div className="notification_number"></div> <i data-toggle="modal" data-target="#exampleModal" class="las la-bell"></i></div>
+                    <div className="px-3 notification"> <div className="notification_number"></div> <i data-toggle="modal" data-target="#exampleModal" className="las la-bell"></i></div>
                     <div className="px-3 emp_img_container">
-                        <div className="emp_img"></div>
+                        <div className="emp_img" style={ { "backgroundImage" : "url('images/employees/" + Cookies.getItem('EmpImg') + "')" } }></div>
                         <div className="emp_dropdown">
                             <p className="pl-4 pb-2 mb-1 font-weight-bold border-bottom">John Doe</p>
                             <NavLink to="/" className="d-center links">
@@ -73,16 +83,16 @@ const TopBar = ( props ) => {
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Notifications</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div className="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Notifications</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <div className="messages-content">
                                 <h6 className="text-center">20-06-2021</h6>
                                 <div className="message">
@@ -97,7 +107,7 @@ const TopBar = ( props ) => {
                                     </small>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-sm ml-auto d-block" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-sm ml-auto d-block" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

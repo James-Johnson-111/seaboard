@@ -17,9 +17,9 @@ const PurchaseOrder = () => {
                         <h3 className="text-uppercase formName">SEABOARD GROUP</h3>
                     </div>
 
-                    <img src={QFS} className="qfs" />
-                    <img src={SBS} className="sbs" />
-                    <img src={SBL} className="sbl" />
+                    <img src={QFS} className="qfs" alt="logos" />
+                    <img src={SBS} className="sbs" alt="logos" />
+                    <img src={SBL} className="sbl" alt="logos" />
 
                     <h6 className="text-center font-weight-bold text-uppercase">Purchase Order</h6>
 
