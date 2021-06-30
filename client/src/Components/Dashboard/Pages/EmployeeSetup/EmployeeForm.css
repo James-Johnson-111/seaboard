@@ -104,6 +104,23 @@ div#AddEducation .modal-body .add_education select option {
     position: absolute;
 }
 
+.EmployeeForm .EmployeeForm-content .Step5 .documents_divs {
+    width: 100%;
+    min-height: 120px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+    background-size: cover;
+}
+
+.EmployeeForm .EmployeeForm-content .Step5 .documents_divs:hover {
+    background-color: rgb(236, 240, 245, .5);
+}
+
 .EmployeeForm .EmployeeForm-content .leftRight label {
     margin-left: 33px;
 }

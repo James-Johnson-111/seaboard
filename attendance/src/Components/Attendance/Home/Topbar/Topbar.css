@@ -1,0 +1,32 @@
+.Topbar {
+    width: 100%;
+    height: 50px;
+    background-color: #222222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    font-family: Poppins;
+    padding: 0 10px;
+}
+
+.Topbar .Topbar-left {
+    width: 50%;
+}
+
+.Topbar .Topbar-right {
+    width: 50%;
+    text-align: right;
+}
+
+.Topbar .Topbar-right .btn {
+    color: #ffffff;
+    font-size: 22px;
+    border-radius: 50%;
+}
+
+.Topbar .Topbar-right .btn:focus {
+    background-color: #ffffff;
+    color: #222222;
+    box-shadow: none;
+}

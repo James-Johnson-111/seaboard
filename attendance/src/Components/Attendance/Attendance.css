@@ -1,0 +1,12 @@
+.Attendance {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Attendance .logo {
+    width: 300px;
+}

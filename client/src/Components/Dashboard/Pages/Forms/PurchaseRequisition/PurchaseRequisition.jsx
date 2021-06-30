@@ -184,7 +184,7 @@ const PurchaseRequisition = () => {
                                     <div className="leftRight w-100 mr-2">
                                         <label className="mb-0 font-weight-bold">Delivery & Work Location:</label>
                                         <div className="d-flex justify-content-center align-items-center">
-                                            <i class="las la-truck"></i>
+                                            <i className="las la-truck"></i>
                                             <textarea name="DWLocation" className="form-control" style={ { 'height' : '80px' } } required minLength="10"></textarea>
                                         </div>
                                     </div>
@@ -318,7 +318,7 @@ const PurchaseRequisition = () => {
                                     
                 </div>
             </div>
-            <div className="modal fade" id="add_specification" tabindex="-1" role="dialog" aria-labelledby="add_specificationLabel" aria-hidden="true">
+            <div className="modal fade" id="add_specification" role="dialog" aria-labelledby="add_specificationLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">

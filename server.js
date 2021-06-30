@@ -3,6 +3,7 @@ const app = express();
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const fileRead = require('fs');
+const db = require('./db/connection');
 
 const PORT = process.env.PORT || 5000;
 
@@ -26,7 +27,7 @@ app.get('/gettimeinout', ( req, res ) => {
         if (err) throw err;
 
         let FirstLine = data.split('\n').shift();
-        console.log(FirstLine);
+        let firstColumn = FirstLine.split(',').shift();
 
         let newVal = data.split('\n').filter(
             (val, index, arr) => {
@@ -36,7 +37,29 @@ app.get('/gettimeinout', ( req, res ) => {
      
         fileRead.writeFile('client/src/text.txt', newVal.join('\n'), 'utf-8', function(err, data) {
             if (err) throw err;
-            res.send('Done!');
+
+            if ( FirstLine.length > 0 )
+            {
+                db.query(
+                    "SELECT * FROM employees WHERE emp_id = " + firstColumn,
+                    ( err, rslt ) => {
+    
+                        if ( err )
+                        {
+                            console.log( err );
+                        }else
+                        {
+    
+                            res.send(rslt);
+    
+                        }
+    
+                    }
+                )
+            }else
+            {
+                res.send('no record found');
+            }
         })
     })
 
@@ -54,4 +77,4 @@ app.listen(PORT, () => {
 
     console.log(`Server run on localhost:${PORT}`);
 
-});
+}, "0.0.0.0");

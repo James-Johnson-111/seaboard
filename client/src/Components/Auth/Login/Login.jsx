@@ -55,9 +55,8 @@ const Login = () => {
             {
                 // if the password and login id ofthe current index of an array is matched with 
                 // the entered login id and password, the following condition will be true
-                if ( (UserData.LoginID === response.data[x].login_id) )
+                if ( UserData.LoginID === response.data[x].login_id )
                 {
-                    
                     const verifyPass = passwordHash.verify( UserData.LoginPass, response.data[x].password );
 
                     if ( verifyPass )
@@ -68,24 +67,20 @@ const Login = () => {
                         Cookies.setItem('EmpImg', response.data[x].image);
                         setUserData( { LoginID: '', LoginPass: '' } );
                         history.push('/login');
+                        break;
                     }else {
                         setStartLoading(false);
                         setUserData( { LoginID: UserData.LoginID, LoginPass: '' } );
                         alert("Password not match");
                     }
                     
-                }else
-                {
-                    setStartLoading(false);
-                    setUserData( { LoginID: UserData.LoginID, LoginPass: '' } );
-                    alert("User Not Found");
                 }
 
             }
 
         } ).catch( error => {
 
-            console.log( error );
+            alert( error );
             setStartLoading(false);
 
         } );

@@ -30,19 +30,11 @@ const TopBar = ( props ) => {
         }, []
     )
 
-    const readWrite = () => {
-        axios.get('/gettimeinout').then(res => {
-            console.log( res.data );
-        }).catch(err => {
-            console.log(err);
-        })
-    }
-
     return (
         <>
             <div className="Dashboard_topbar d-center shadow-sm">
                 <div className="topbar_news d-450-none">
-                    <p className="mb-0" style={{ "whiteSpace": 'nowrap' }} onClick={ readWrite }>
+                    <p className="mb-0" style={{ "whiteSpace": 'nowrap' }}>
                         <marquee direction="left">
                             In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.
                         </marquee>

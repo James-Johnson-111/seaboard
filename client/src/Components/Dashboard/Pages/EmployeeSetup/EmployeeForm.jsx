@@ -30,6 +30,19 @@ const EmployeeForm = () => {
     const [ Camera, setCamera ] = useState( false );
     const [ empImages, setempImages ]  = useState('');
 
+    const [ empCNIC, setempCNIC ]  = useState( {
+        cnic: '', imgName: '', file: ''
+    } );
+    const [ empCV, setempCV ]  = useState( {
+        CV: '', imgName: '', file: ''
+    } );
+    const [ empPAddress, setempPAddress ]  = useState( {
+        PAddress: '', imgName: '', file: ''
+    } );
+    const [ empEdu, setempEdu ]  = useState( {
+        Education: '', imgName: '', file: ''
+    } );
+
     const refs = useRef(null);
 
     // React lifecycle
@@ -39,16 +52,30 @@ const EmployeeForm = () => {
         $('.Step3').slideUp(0);
         $('.Step4').slideUp(0);
         $('.Step5').slideUp(0);
+        $('.Step6').slideUp(0);
 
         $('.form1').on( 'submit', ( e ) => {
 
             e.preventDefault();
-            if ( $("input[name='password']").val() === $("input[name='cnfpassword']").val() )
-            {
-                $('.Step1').slideUp();
-                $('.Step2').slideDown();
-                $('.cnic_icon').addClass('activeStep');
-            }
+            const Data = new FormData();
+            Data.append('LoginID', $("input[name='usrname']").val());
+            axios.post('/usernameexistornot', Data).then(response => {
+
+                if (response.data[0] !== undefined) {
+                    alert("User already exist");
+                } else {
+                    if ($("input[name='password']").val() === $("input[name='cnfpassword']").val()) {
+                        $('.Step1').slideUp();
+                        $('.Step2').slideDown();
+                        $('.cnic_icon').addClass('activeStep');
+                    }
+                }
+
+            }).catch(error => {
+
+                console.log(error);
+
+            });
             
         } );
 
@@ -87,14 +114,23 @@ const EmployeeForm = () => {
         } );
 
         $('.step4_btn_next').on( 'click', () => {
+
             $('.Step4').slideUp();
             $('.Step5').slideDown();
+            $('.documents_icon').addClass('activeStep');
 
-            setTimeout(() => {
-                
-                history.push('/dashboard');
+        } );
 
-            }, 1000);
+        $('.step5_btn_prev').on( 'click', () => {
+            $('.Step4').slideDown();
+            $('.Step5').slideUp();
+            $('.documents_icon').removeClass('activeStep');
+        } );
+
+        $('.step5_btn_next').on( 'click', () => {
+
+            $('.Step5').slideUp();
+            $('.Step6').slideDown();
 
         } );
 
@@ -159,10 +195,6 @@ const EmployeeForm = () => {
     const onChangeHandler = ( e ) => {
 
         const { name, value } = e.target;
-        if ( name === 'password' )
-        {
-            console.log( passwordHash.generate(value) );
-        }
         const setVal = {
             ...Employee,
             [name]: value
@@ -232,6 +264,14 @@ const EmployeeForm = () => {
             FormsData.append('password', passwordHash.generate( Employee.password ));
             FormsData.append('education', JSON.stringify(EducationAdded));
             FormsData.append('Image', Employee.Image);
+            FormsData.append('CNICImage', empCNIC.file);
+            FormsData.append('CNICImageName', empCNIC.imgName);
+            FormsData.append('CVImage', empCV.file);
+            FormsData.append('CVImageName', empCV.imgName);
+            FormsData.append('AddressImage', empPAddress.file);
+            FormsData.append('AddressImageName', empPAddress.imgName);
+            FormsData.append('EducationImage', empEdu.file);
+            FormsData.append('EducationImageName', empEdu.imgName);
 
             axios.post('/employeedata', FormsData, {
 
@@ -248,6 +288,48 @@ const EmployeeForm = () => {
 
         }
     }
+    
+    const onImageUpload = ( event ) => {
+
+        const reader = new FileReader();
+        const { name } = event.target;
+
+        let Name = Employee.Name;
+        let subName = Name.substring(0,2);
+
+        let Profession = Employee.FatherName;
+        let subProfession = Profession.substring(0,3);
+
+        let Passport = Employee.cnic;
+        let subPassport = Passport.substring(0,4);
+
+        let ImageCurrentName = subName + subProfession + subPassport;
+
+        reader.onload = () => {
+
+            if( reader.readyState === 2 )
+            {
+
+                if ( name === 'cnicPhoto' )
+                {
+                    setempCNIC( { ...empCNIC, cnic: reader.result, imgName: ImageCurrentName, file: event.target.files[0] } )
+                }else if ( name === 'cvPhoto' )
+                {
+                    setempCV( { ...empCV, CV: reader.result, imgName: ImageCurrentName, file: event.target.files[0] } )
+                }else if ( name === 'paddressPhoto' )
+                {
+                    setempPAddress( { ...empPAddress, PAddress: reader.result, imgName: ImageCurrentName, file: event.target.files[0] } )
+                }else {
+                    setempEdu( { ...empEdu, Education: reader.result, imgName: ImageCurrentName, file: event.target.files[0] } )
+                }
+
+            }
+
+        }
+
+        reader.readAsDataURL( event.target.files[0] );
+
+    }
 
     const videoConstraints = {
         width: 1280,
@@ -261,7 +343,7 @@ const EmployeeForm = () => {
                 <div className="EmployeeForm-content">
                     <div className="firstform">
                         <div className="text-center mb-3 emp_heading">
-                            <h3 className="text-uppercase formName mb-1">Employement Form</h3>
+                            <h3 className="text-uppercase formName mb-1">Employment Form</h3>
                             <p>Seaboard Group Employee Data Form</p>
                         </div>
 
@@ -281,6 +363,10 @@ const EmployeeForm = () => {
                             <div>
                                 <i className="las la-camera photo_icon"></i>
                                 <p className="mb-0 mt-1 text-center ">Photo</p>
+                            </div>
+                            <div>
+                                <i className="las la-file-alt documents_icon"></i>
+                                <p className="mb-0 mt-1 text-center ">Documents</p>
                             </div>
                         </div>
 
@@ -492,18 +578,57 @@ const EmployeeForm = () => {
                         </div>
 
                         <div className="Step4">
-                            <form onSubmit={ EmplloyeeSetup } encType="multipart/form-data">
+                            <form encType="multipart/form-data">
                                 <div className="d-lg-flex justify-content-center mb-2">
                                     <div className="employee_img" data-toggle="modal" data-target="#myModal" style={{ 'backgroundImage': "url('" + empImages + "')" }}></div>
                                 </div>
                                 <div className="text-right mt-3 mr-2">
                                     <button type="button" className="btn btn-sm step4_btn_prev">Previous</button>
-                                    <button type="submit" className="btn btn-sm step4_btn_next">Submit</button>
+                                    <button type="button" className="btn btn-sm step4_btn_next">Submit</button>
                                 </div>
                             </form>
                         </div>
 
                         <div className="Step5">
+                            <form onSubmit={ EmplloyeeSetup } encType="multipart/form-data">
+                                <div className="d-lg-flex justify-content-center mb-2">
+                                    <div className="leftRight mr-3 w-25">
+                                        <div className="documents_divs" style={{ 'backgroundImage': "url('" + empCNIC.cnic + "')" }} onClick={ () => $('#cnicPhotograph').trigger('click') }>
+                                            <span className="m-0 p-0">CNIC</span>
+                                        </div>
+                                    </div>
+                                    <div className="leftRight mr-3 w-25">
+                                        <div className="documents_divs" style={{ 'backgroundImage': "url('" + empCV.CV + "')" }} onClick={ () => $('#cvPhotograph').trigger('click') }>
+                                            <span className="m-0 p-0">CV</span>
+                                        </div>
+                                    </div>
+                                    <div className="leftRight mr-3 w-25">
+                                        <div className="documents_divs" style={{ 'backgroundImage': "url('" + empPAddress.PAddress + "')" }} onClick={ () => $('#paddressPhotograph').trigger('click') }>
+                                            <span className="m-0 p-0">Proof of Address</span>
+                                        </div>
+                                    </div>
+                                    <div className="leftRight mr-2 w-25">
+                                        <div className="documents_divs" style={{ 'backgroundImage': "url('" + empEdu.Education + "')" }} onClick={ () => $('#eduPhotograph').trigger('click') }>
+                                            <span className="m-0 p-0">Educational Document</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* hidden input type = file */}
+                                <input type="file" name="cnicPhoto" id="cnicPhotograph" style={ { 'display' : 'none' } } onChange={ onImageUpload } required />
+                                <input type="file" name="cvPhoto" id="cvPhotograph" style={ { 'display' : 'none' } } onChange={ onImageUpload } required />
+                                <input type="file" name="paddressPhoto" id="paddressPhotograph" style={ { 'display' : 'none' } } onChange={ onImageUpload } required />
+                                <input type="file" name="eduPhoto" id="eduPhotograph" style={ { 'display' : 'none' } } onChange={ onImageUpload } required />
+
+
+                                <div className="text-right mt-3 mr-2">
+                                    <button type="button" className="btn btn-sm step5_btn_prev">Previous</button>
+                                    <button type="submit" className="btn btn-sm step5_btn_next">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div className="Step6">
                             <div className="d-lg-flex justify-content-center mb-2">
                                 <h3 className="mt-4">Form Submitted Successfully</h3>
                             </div>

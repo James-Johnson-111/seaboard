@@ -54,7 +54,7 @@ const SideBar = ( props ) => {
                     </NavLink>
                     <NavLink activeClassName="Dashboard_active" to="/employee" className="d-center links">
                         <div className="pr-3"><i className="las la-user-cog"></i></div>
-                        <div className="links_txt">Employement Setup</div>
+                        <div className="links_txt">Employment Setup</div>
                     </NavLink>
                     <div className="d-center links forms_link">
                         <div className="pr-3"><i className="las la-server"></i></div>
