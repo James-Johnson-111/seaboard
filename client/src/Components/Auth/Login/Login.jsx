@@ -63,6 +63,7 @@ const Login = () => {
                     {
                         alert("Login success");
                         setStartLoading(false);
+                        Cookies.setItem('EmpID', response.data[x].emp_id);
                         Cookies.setItem('LoginID', response.data[x].login_id);
                         Cookies.setItem('EmpImg', response.data[x].image);
                         setUserData( { LoginID: '', LoginPass: '' } );

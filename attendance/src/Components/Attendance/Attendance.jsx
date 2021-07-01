@@ -5,6 +5,8 @@ import Loading from './UI/Loading/Loading';
 import axios from '../../axios';
 import { useHistory } from 'react-router-dom';
 
+import Cookies from 'js-cookies';
+
 const Attendance = () => {
 
     const history = useHistory();
@@ -13,13 +15,22 @@ const Attendance = () => {
     useEffect(
         () => {
 
+            const Data = new FormData();
+            // Data.append('companyID');
             setInterval(() => {
-                axios.get('/gettimeinout').then(res => {
+                axios.post('/gettimeinout').then(res => {
                 
                     if ( res.data[0] !== 'n' )
                     {
+                        setStartLoading( true );
                         console.log( res.data[0] );
-                        history.push('/home');
+                        Cookies.setItem('emp_id', res.data[0].emp_id);
+                        Cookies.setItem('loginID', res.data[0].login_id);
+                        Cookies.setItem('timeIN', res.data[0].time_in);
+                        Cookies.setItem('timeOUT', res.data[0].time_out);
+                        setTimeout(() => {
+                            history.push('/home');
+                        }, 1000);
                     }
     
                 }).catch(err => {

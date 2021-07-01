@@ -15,7 +15,7 @@ app.use( express.static( path.join( __dirname, 'public' ) ) );
 app.use( fileUpload() );
 
 
-app.get('/gettimeinout', ( req, res ) => {
+app.post('/gettimeinout', ( req, res ) => {
 
     // for read its last modified date
     // fileRead.stat("client/src/text.txt", function(err, stats){
@@ -28,6 +28,7 @@ app.get('/gettimeinout', ( req, res ) => {
 
         let FirstLine = data.split('\n').shift();
         let firstColumn = FirstLine.split(',').shift();
+        let lastColumn = FirstLine.split(',').pop().substring(0, 2);
 
         let newVal = data.split('\n').filter(
             (val, index, arr) => {
@@ -49,7 +50,8 @@ app.get('/gettimeinout', ( req, res ) => {
                             console.log( err );
                         }else
                         {
-    
+
+                            rslt[0].device = lastColumn;
                             res.send(rslt);
     
                         }
@@ -61,7 +63,7 @@ app.get('/gettimeinout', ( req, res ) => {
                 res.send('no record found');
             }
         })
-    })
+    });
 
 } );
 
@@ -71,10 +73,16 @@ app.use( require('./Routes/Auth/auth') );
 // Following route for employee form
 app.use( require('./Routes/Employee/employee') );
 
+// Following route for employee attendance
+app.use( require('./Routes/Attendance/attendance') );
+
+// Following route for employee descussions
+app.use( require('./Routes/Employee/descussions') );
+
 // the following block of code is to define the port number which is dynamic
 
 app.listen(PORT, () => {
 
     console.log(`Server run on localhost:${PORT}`);
 
-}, "0.0.0.0");
+}, '0.0.0.0');

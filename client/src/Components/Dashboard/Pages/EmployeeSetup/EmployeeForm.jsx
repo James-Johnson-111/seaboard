@@ -16,7 +16,7 @@ const EmployeeForm = () => {
     const [ Employee, setEmployee ] = useState( {
         Name: '', FatherName: '', Dob: '', PoB: '', Image: '', ImageName: '', RsdtAddress: '', PrmtAddress: '', Emergency_contact_person: '', 
         Emergency_contact_number: '', landlineHome: '', personal_no: '', cnic: '', cnic_PoI: '', cnic_DoI: '', cnic_DoE: '', password: '', usrname: '',
-        cnfpassword: ''
+        cnfpassword: '', timeIN: '', timeOUT: '', additionalOFF: ''
     } );
 
     const [ Education, setEducation ] = useState(
@@ -261,6 +261,9 @@ const EmployeeForm = () => {
             FormsData.append('cnic_PoI', Employee.cnic_PoI);
             FormsData.append('cnic_DoI', Employee.cnic_DoI);
             FormsData.append('cnic_DoE', Employee.cnic_DoE);
+            FormsData.append('timeIN', Employee.timeIN);
+            FormsData.append('timeOUT', Employee.timeOUT);
+            FormsData.append('additionalOFF', Employee.additionalOFF);
             FormsData.append('password', passwordHash.generate( Employee.password ));
             FormsData.append('education', JSON.stringify(EducationAdded));
             FormsData.append('Image', Employee.Image);
@@ -463,6 +466,82 @@ const EmployeeForm = () => {
                                         <div className="d-flex justify-content-center align-items-center">
                                             <i className="las la-lock"></i>
                                             <input onChange={onChangeHandler} name="cnfpassword" type="password" pattern="^[A-Za-z0-9]+$" title="Confirm Password only contains letters and Numbers" className="form-control" required minLength="3" maxLength="20" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="d-lg-flex justify-content-center mb-2">
+                                    <div className="leftRight mr-2">
+                                        <div className="d-lg-flex justify-content-center mb-2">
+                                            <div className="leftRight mr-2">
+                                                <label className="mb-0 font-weight-bold">TimeIn:</label>
+                                                <div className="d-flex justify-content-center align-items-center">
+                                                    <i className="las la-history"></i>
+                                                    <select name="timeIN" className="form-control" onChange={ onChangeHandler }>
+                                                        <option value="">Select Time</option>
+                                                        <option value="05:00 am">05:00 am</option>
+                                                        <option value="06:00 am">06:00 am</option>
+                                                        <option value="07:00 am">07:00 am</option>
+                                                        <option value="08:00 am">08:00 am</option>
+                                                        <option value="09:00 am">09:00 am</option>
+                                                        <option value="10:00 am">10:00 am</option>
+                                                        <option value="11:00 am">11:00 am</option>
+                                                        <option value="12:00 pm">12:00 pm</option>
+                                                        <option value="01:00 pm">01:00 pm</option>
+                                                        <option value="02:00 pm">02:00 pm</option>
+                                                        <option value="03:00 pm">03:00 pm</option>
+                                                        <option value="04:00 pm">04:00 pm</option>
+                                                        <option value="05:00 pm">05:00 pm</option>
+                                                        <option value="06:00 pm">06:00 pm</option>
+                                                        <option value="07:00 pm">07:00 pm</option>
+                                                        <option value="08:00 pm">08:00 pm</option>
+                                                        <option value="09:00 pm">09:00 pm</option>
+                                                        <option value="10:00 pm">10:00 pm</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="leftRight">
+                                                <label className="mb-0 font-weight-bold">TimeOut:</label>
+                                                <div className="d-flex justify-content-center align-items-center">
+                                                    <i className="lar la-clock"></i>
+                                                    <select name="timeOUT" className="form-control" onChange={ onChangeHandler }>
+                                                        <option value="">Select Time</option>
+                                                        <option value="05:00 am">05:00 am</option>
+                                                        <option value="06:00 am">06:00 am</option>
+                                                        <option value="07:00 am">07:00 am</option>
+                                                        <option value="08:00 am">08:00 am</option>
+                                                        <option value="09:00 am">09:00 am</option>
+                                                        <option value="10:00 am">10:00 am</option>
+                                                        <option value="11:00 am">11:00 am</option>
+                                                        <option value="12:00 pm">12:00 pm</option>
+                                                        <option value="01:00 pm">01:00 pm</option>
+                                                        <option value="02:00 pm">02:00 pm</option>
+                                                        <option value="03:00 pm">03:00 pm</option>
+                                                        <option value="04:00 pm">04:00 pm</option>
+                                                        <option value="05:00 pm">05:00 pm</option>
+                                                        <option value="06:00 pm">06:00 pm</option>
+                                                        <option value="07:00 pm">07:00 pm</option>
+                                                        <option value="08:00 pm">08:00 pm</option>
+                                                        <option value="09:00 pm">09:00 pm</option>
+                                                        <option value="10:00 pm">10:00 pm</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="leftRight mr-2">
+                                        <label className="mb-0 font-weight-bold">Additional Off (if any):</label>
+                                        <div className="d-flex justify-content-center align-items-center">
+                                            <i className="las la-toggle-off"></i>
+                                            <select name="additionalOFF" className="form-control" onChange={ onChangeHandler }>
+                                                <option value="">Select the day</option>
+                                                <option value="Sunday">Sunday</option>
+                                                <option value="Monday">Monday</option>
+                                                <option value="Tuesday">Tuesday</option>
+                                                <option value="Wednesday">Wednesday</option>
+                                                <option value="Thursday">Thursday</option>
+                                                <option value="Friday">Friday</option>
+                                                <option value="Saturday">Saturday</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

@@ -53,7 +53,7 @@ const TopBar = ( props ) => {
                     <div className="px-3 emp_img_container">
                         <div className="emp_img" style={ { "backgroundImage" : "url('images/employees/" + Cookies.getItem('EmpImg') + "')" } }></div>
                         <div className="emp_dropdown">
-                            <p className="pl-4 pb-2 mb-1 font-weight-bold border-bottom">John Doe</p>
+                            <p className="pl-4 pb-2 mb-1 font-weight-bold border-bottom"> { Cookies.getItem('LoginID') } </p>
                             <NavLink to="/" className="d-center links">
                                 <div className="pr-3"><i className="las la-user"></i></div>
                                 <div className="links_txt">Profile</div>
