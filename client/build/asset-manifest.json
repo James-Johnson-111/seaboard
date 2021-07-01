@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ee5747dc.chunk.css",
+    "main.js": "/static/js/main.ace3892b.chunk.js",
+    "main.js.map": "/static/js/main.ace3892b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.40125e9c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.40125e9c.js.map",
+    "static/js/2.2d3e6d57.chunk.js": "/static/js/2.2d3e6d57.chunk.js",
+    "static/js/2.2d3e6d57.chunk.js.map": "/static/js/2.2d3e6d57.chunk.js.map",
+    "static/js/3.94392fbe.chunk.js": "/static/js/3.94392fbe.chunk.js",
+    "static/js/3.94392fbe.chunk.js.map": "/static/js/3.94392fbe.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.ee5747dc.chunk.css.map": "/static/css/main.ee5747dc.chunk.css.map",
+    "static/js/2.2d3e6d57.chunk.js.LICENSE.txt": "/static/js/2.2d3e6d57.chunk.js.LICENSE.txt",
+    "static/media/fonts.css": "/static/media/Roboto-Bold.4f39c579.ttf",
+    "static/media/QFS-LOGO.d97e6918.PNG": "/static/media/QFS-LOGO.d97e6918.PNG",
+    "static/media/SBL-LOGO.3e8ecf8d.PNG": "/static/media/SBL-LOGO.3e8ecf8d.PNG",
+    "static/media/SEABOARD-SERVICES.b1cc0596.PNG": "/static/media/SEABOARD-SERVICES.b1cc0596.PNG"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.40125e9c.js",
+    "static/js/2.2d3e6d57.chunk.js",
+    "static/css/main.ee5747dc.chunk.css",
+    "static/js/main.ace3892b.chunk.js"
+  ]
+}
